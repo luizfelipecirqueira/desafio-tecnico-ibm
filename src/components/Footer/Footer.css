@@ -1,0 +1,14 @@
+.div-Footer {
+    background-color: #CCEBD8;
+    padding: 30px;
+    margin: 0;
+}
+
+.footer {
+    text-align: center;
+    color: #A90139;
+    font-family: "Krub", Sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    line-height: 58.5px;
+}
