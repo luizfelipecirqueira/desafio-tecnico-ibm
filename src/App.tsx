@@ -4,15 +4,15 @@ import './assets/css/style.css';
 
 function App() {
 
- 
   return (
     <div className="App">
       <form className="formulario">
         <div className="input-text">
           <TextField id="standard-basic" label="Digite aqui seu livro" />
         </div>
+
         <div className="button">
-          <Button variant="contained" type="submit">
+          <Button variant="contained">
             Carregar
           </Button>
         </div>

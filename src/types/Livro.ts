@@ -1,3 +1,7 @@
 export type Livro = {
-    title: string
+    title: string,
+    selfLink: string,
+    etag: string,
+    id: string,
+    kid: string,
 }
