@@ -15,6 +15,7 @@ export const ContainerFormulario = styled.div`
 export const ContainerBotao = styled.div`
     display: flex;
     margin-top: 30px;
+    margin-bottom: 50px;
     justify-content: center;
     align-items: center;
 `;

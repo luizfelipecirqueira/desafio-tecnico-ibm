@@ -23,7 +23,6 @@ export const Home = (props: Props) => {
                 <form onSubmit={formik.handleSubmit}>
                     <ContainerFormulario>
                         <TextField variant="outlined" label="Digite o termo de Pesquisa" />
-
                         <ContainerBotao>
                             <Button variant="contained">
                                 Carregar
