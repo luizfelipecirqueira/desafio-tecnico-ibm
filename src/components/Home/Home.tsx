@@ -1,6 +1,8 @@
 import React from "react";
 import { TextField, Button } from '@mui/material';
 import { useFormik } from 'formik';
+import { Container, ContainerFormulario, ContainerBotao } from "../../styles/Home";
+
 
 type Props = {
     onSubmit: (values: { search: string }) => void
@@ -16,15 +18,20 @@ export const Home = (props: Props) => {
     });
 
     return (
-        <div>
+        <Container>
+            <div>
+                <form onSubmit={formik.handleSubmit}>
+                    <ContainerFormulario>
+                        <TextField variant="outlined" label="Digite o termo de Pesquisa" />
 
-            <form onSubmit={formik.handleSubmit}>
-
-                <TextField variant="outlined" label="Digite o termo de Pesquisa" />
-
-                <Button variant="contained">Carregar</Button>
-            </form>
-
-        </div>
+                        <ContainerBotao>
+                            <Button variant="contained">
+                                Carregar
+                            </Button>
+                        </ContainerBotao>
+                    </ContainerFormulario>
+                </form>
+            </div>
+        </Container>
     )
 }
