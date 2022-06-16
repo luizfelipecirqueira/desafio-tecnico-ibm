@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, TextField } from '@mui/material';
+import { TextField, Button } from '@mui/material';
 import { useFormik } from 'formik';
 
 type Props = {
@@ -17,11 +17,14 @@ export const Home = (props: Props) => {
 
     return (
         <div>
-            <form onSubmit={formik.handleSubmit}>
-                <TextField />
 
-                <Button>Carregar</Button>
+            <form onSubmit={formik.handleSubmit}>
+
+                <TextField variant="outlined" label="Digite o termo de Pesquisa" />
+
+                <Button variant="contained">Carregar</Button>
             </form>
+
         </div>
     )
 }
