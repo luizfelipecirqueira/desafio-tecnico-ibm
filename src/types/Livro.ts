@@ -1,7 +1,13 @@
 export type Livro = {
-    title: string,
-    selfLink: string,
-    etag: string,
+    kind: string,
     id: string,
-    kid: string,
+    etag: string,
+    selfLink: string,
+    title: string;
+    subtitle: string,
+    authors?: string[],
+    publisher: string,
+    publishedDate?: string,
+    description: string,
+    thumbnail?: string,
 }
