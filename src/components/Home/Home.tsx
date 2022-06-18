@@ -1,35 +1,85 @@
-import React from "react";
+// @ts-nocheck
+import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { TextField, Button } from '@mui/material';
 import { useFormik } from 'formik';
 import { Container, ContainerFormulario, ContainerBotao } from "../../styles/Home";
+import { useAxios } from "../../hooks/UseFetch";
+import { Livro } from "../../types/Livro";
+import {useDescriptionContext} from "../../context/contextDescription";
 
 
-type Props = {
-    onSubmit: (values: { search: string }) => void
-}
+export const Home = () => {
+    const {handleSelectedBook} = useDescriptionContext();
+    const { fetchData, loading, response } = useAxios();
+    const [page, setPage] = useState(0);
+    const [submited, setSubmited] = useState('');
+    const navigate = useNavigate();
 
-export const Home = (props: Props) => {
+    const prevPage = () => setPage(
+        state => {
+            if (page === 0) {
+                return page;
+            }
+            else {
+                return state - 1;
+            }
+        });
+
+    const nextPage = () => setPage(
+        state => state + 1
+    )
+
+    useEffect(() => {
+        submited && fetchData({
+            method: "get", url: submited + `?p=${page}`
+        });
+    }, [page, submited])
 
     const formik = useFormik({
+        validate: values => {
+            const errors = {};
+            if (!values.search) {
+                errors.search = 'Favor Preencher o campo de pesquisa!';
+            }
+            return errors;
+        },
         initialValues: {
             search: '',
         },
-        onSubmit: props.onSubmit
+        onSubmit: values => {
+            setSubmited(values.search);
+            setPage(0);
+        }
     });
+
+    if (loading) {
+        return <h2>Carregando...</h2>;
+    }
 
     return (
         <Container>
             <div>
                 <form onSubmit={formik.handleSubmit}>
                     <ContainerFormulario>
-                        <TextField variant="outlined" label="Digite o termo de Pesquisa" />
+                        <TextField variant="outlined" label="Digite o termo de Pesquisa" id="search" name="search" onChange={formik.handleChange} />
+                        {formik.errors.search ? <div>{formik.errors.search}</div> : null}
                         <ContainerBotao>
-                            <Button variant="contained">
+                            <Button variant="contained" type="submit">
                                 Carregar
                             </Button>
                         </ContainerBotao>
                     </ContainerFormulario>
                 </form>
+                {response && response.items.map((item:Livro, index) => (
+                    <div key={index} onClick={() => {handleSelectedBook(item); navigate("/description")}}>
+                        <img src={item.volumeInfo.imageLinks.thumbnail} />
+                        <p>{item.volumeInfo.title}</p>
+                    </div>
+                ))
+                }
+                <button onClick={prevPage}>Prev</button>
+                <button onClick={nextPage}>Next</button>
             </div>
         </Container>
     )

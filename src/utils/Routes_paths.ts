@@ -1,3 +1,4 @@
 export enum ROUTHES_PATH {
-    HOME = "/"
+    HOME = "/",
+    DESCRIPTION = "/description"
 }
