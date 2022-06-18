@@ -19,3 +19,7 @@ export const ContainerBotao = styled.div`
     justify-content: center;
     align-items: center;
 `;
+
+export const ContainerInfo = styled.div`
+    display: flex;
+`;

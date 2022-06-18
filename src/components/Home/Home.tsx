@@ -3,14 +3,14 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { TextField, Button } from '@mui/material';
 import { useFormik } from 'formik';
-import { Container, ContainerFormulario, ContainerBotao } from "../../styles/Home";
+import { Container, ContainerFormulario, ContainerBotao, ContainerInfo } from "../../styles/Home";
 import { useAxios } from "../../hooks/UseFetch";
 import { Livro } from "../../types/Livro";
-import {useDescriptionContext} from "../../context/contextDescription";
+import { useDescriptionContext } from "../../context/contextDescription";
 
 
 export const Home = () => {
-    const {handleSelectedBook} = useDescriptionContext();
+    const { handleSelectedBook } = useDescriptionContext();
     const { fetchData, loading, response } = useAxios();
     const [page, setPage] = useState(0);
     const [submited, setSubmited] = useState('');
@@ -71,11 +71,16 @@ export const Home = () => {
                         </ContainerBotao>
                     </ContainerFormulario>
                 </form>
-                {response && response.items.map((item:Livro, index) => (
-                    <div key={index} onClick={() => {handleSelectedBook(item); navigate("/description")}}>
-                        <img src={item.volumeInfo.imageLinks.thumbnail} />
-                        <p>{item.volumeInfo.title}</p>
+                {response && response.items.map((item: Livro, index) => (
+
+                    <div key={index} onClick={() => { handleSelectedBook(item); navigate("/description") }}>
+                        <ContainerInfo>
+                            <img src={item.volumeInfo.imageLinks.thumbnail} />
+                            <p>{item.volumeInfo.title}</p>
+                            <p>{item.volumeInfo.subtitle}</p>
+                        </ContainerInfo>
                     </div>
+
                 ))
                 }
                 <button onClick={prevPage}>Prev</button>
