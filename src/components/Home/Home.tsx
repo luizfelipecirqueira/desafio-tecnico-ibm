@@ -1,7 +1,7 @@
-import React from "react";
+import React from 'react';
 import { TextField, Button } from '@mui/material';
 import { useFormik } from 'formik';
-import { Container, ContainerFormulario, ContainerBotao } from "../../styles/Home";
+import { Container, ContainerFormulario, ContainerBotao } from '../../styles/Home';
 
 
 type Props = {
@@ -22,7 +22,7 @@ export const Home = (props: Props) => {
             <div>
                 <form onSubmit={formik.handleSubmit}>
                     <ContainerFormulario>
-                        <TextField variant="outlined" label="Digite o termo de Pesquisa" />
+                        <TextField variant="outlined" label="Digite o termo de Pesquisa" onChange={formik.handleChange} required />
                         <ContainerBotao>
                             <Button variant="contained">
                                 Carregar
