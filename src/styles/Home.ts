@@ -62,6 +62,7 @@ export const ContainerTextInfo = styled.div`
 export const ContainterTituloTextInfo = styled.div`
     display: flex;
     flex-direction: row;
+    margin: 30px 0 0 0;
 `;
 
 export const ImageBooks = styled.div`

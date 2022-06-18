@@ -1,16 +1,22 @@
 import { Button } from '@mui/material';
-import React from 'react';
+import React, { useState } from 'react';
+import { AiOutlineHeart } from "react-icons/ai";
 import { useDescriptionContext } from "../../context/contextDescription";
+import { ContainerIcon } from '../../styles/Description';
 import { ContainerBotao, ContainterTituloTextInfo, TextInfo, TituloInfo } from '../../styles/Home';
 
 export const Description = () => {
 
     const { selectedBook } = useDescriptionContext();
+    
 
     if (selectedBook) { console.log(selectedBook); }
 
     return (
         <div>
+            <ContainerIcon>
+                <AiOutlineHeart size={35} />
+            </ContainerIcon>
             <ContainterTituloTextInfo>
                 <TituloInfo>Título: </TituloInfo><TextInfo>{selectedBook && selectedBook.volumeInfo.title}</TextInfo>
             </ContainterTituloTextInfo>
