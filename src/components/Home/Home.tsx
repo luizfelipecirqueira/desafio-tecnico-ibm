@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { TextField, Button } from '@mui/material';
 import { useFormik } from 'formik';
-import { Container, ContainerFormulario, ContainerBotao, ContainerInfo } from "../../styles/Home";
+import { Carregando, Container, ContainerFormulario, ContainerBotao, ContainerInfo, TextInfo, ContainerTextInfo } from "../../styles/Home";
 import { useAxios } from "../../hooks/UseFetch";
 import { Livro } from "../../types/Livro";
 import { useDescriptionContext } from "../../context/contextDescription";
@@ -54,7 +54,7 @@ export const Home = () => {
     });
 
     if (loading) {
-        return <h2>Carregando...</h2>;
+        return <Carregando>Carregando...</Carregando>;
     }
 
     return (
@@ -76,8 +76,10 @@ export const Home = () => {
                     <div key={index} onClick={() => { handleSelectedBook(item); navigate("/description") }}>
                         <ContainerInfo>
                             <img src={item.volumeInfo.imageLinks.thumbnail} />
-                            <p>{item.volumeInfo.title}</p>
-                            <p>{item.volumeInfo.subtitle}</p>
+                            <ContainerTextInfo>
+                                <TextInfo>Título: {item.volumeInfo.title}</TextInfo>
+                                <TextInfo>Subtítulo: {item.volumeInfo.subtitle}</TextInfo>
+                            </ContainerTextInfo>
                         </ContainerInfo>
                     </div>
 
