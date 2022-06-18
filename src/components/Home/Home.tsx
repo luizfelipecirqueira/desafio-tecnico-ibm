@@ -80,6 +80,9 @@ export const Home = () => {
                                     <TituloInfo>Título: </TituloInfo><TextInfo>{item.volumeInfo.title}</TextInfo>
                                 </ContainterTituloTextInfo>
                                 <ContainterTituloTextInfo>
+                                    <TituloInfo>Autor(es): </TituloInfo><TextInfo>{item.volumeInfo.authors}</TextInfo>
+                                </ContainterTituloTextInfo>
+                                <ContainterTituloTextInfo>
                                     <TituloInfo>Editora: </TituloInfo><TextInfo>{item.volumeInfo.publisher}</TextInfo>
                                 </ContainterTituloTextInfo>
                                 <ContainterTituloTextInfo>
