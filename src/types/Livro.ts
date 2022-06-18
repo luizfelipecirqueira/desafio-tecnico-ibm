@@ -6,9 +6,6 @@ export type Livro = {
     publisher:string,
     publishedDate:string,
     description:string,
-    imageLinks:{
-        thumbnail?:string
-    },
     industryIdentifiers:{
         type:string,
         identifier:string

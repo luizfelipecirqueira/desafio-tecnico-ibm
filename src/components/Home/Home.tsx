@@ -63,7 +63,7 @@ export const Home = () => {
                 <form onSubmit={formik.handleSubmit}>
                     <ContainerFormulario>
                         <TextField variant="outlined" label="Digite o termo de Pesquisa" id="search" name="search" onChange={formik.handleChange} />
-                        {formik.errors.search ? <div>{formik.errors.search}</div> : null}
+                        <TextInfo>{formik.errors.search ? <div>{formik.errors.search}</div> : null}</TextInfo>
                         <ContainerBotao>
                             <Button variant="contained" type="submit">
                                 Carregar
@@ -75,18 +75,20 @@ export const Home = () => {
 
                     <div key={index} onClick={() => { handleSelectedBook(item); navigate("/description") }}>
                         <ContainerInfo>
-                            <img src={item.volumeInfo.imageLinks.thumbnail} />
                             <ContainerTextInfo>
                                 <TextInfo>Título: {item.volumeInfo.title}</TextInfo>
-                                <TextInfo>Subtítulo: {item.volumeInfo.subtitle}</TextInfo>
+                                <TextInfo>Editora: {item.volumeInfo.publisher}</TextInfo>
+                                <TextInfo>Data da Publicação: {item.volumeInfo.publishedDate}</TextInfo>
                             </ContainerTextInfo>
                         </ContainerInfo>
                     </div>
 
                 ))
                 }
-                <button onClick={prevPage}>Prev</button>
-                <button onClick={nextPage}>Next</button>
+                <ContainerBotao>
+                    <Button variant="contained" onClick={prevPage}>Prev</Button>
+                    <Button variant="contained" onClick={nextPage}>Next</Button>
+                </ContainerBotao>
             </div>
         </Container>
     )
