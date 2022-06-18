@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { TextField, Button } from '@mui/material';
 import { useFormik } from 'formik';
-import { Carregando, Container, ContainerFormulario, ContainerBotao, ContainerInfo, TituloInfo, TextInfo, ContainerTextInfo, ContainterTituloTextInfo } from "../../styles/Home";
+import { Carregando, Container, ContainerFormulario, ContainerBotao, ContainerBotaoPage, ContainerInfo, TituloInfo, TextInfo, ContainerTextInfo, ContainterTituloTextInfo } from "../../styles/Home";
 import { useAxios } from "../../hooks/UseFetch";
 import { Livro } from "../../types/Livro";
 import { useDescriptionContext } from "../../context/contextDescription";
@@ -94,10 +94,10 @@ export const Home = () => {
 
                 ))
                 }
-                <ContainerBotao>
+                <ContainerBotaoPage>
                     <Button variant="contained" onClick={prevPage}>Prev</Button>
                     <Button variant="contained" onClick={nextPage}>Next</Button>
-                </ContainerBotao>
+                </ContainerBotaoPage>
             </div>
         </Container>
     )

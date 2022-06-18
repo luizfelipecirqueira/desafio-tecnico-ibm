@@ -4,7 +4,7 @@ import { ContainerHeader, TextoHeader } from '../../styles/Header';
 export const Header = () => {
     return (
         <ContainerHeader>
-            <TextoHeader>Projeto Busca de Livros - IBM</TextoHeader>
+            <TextoHeader>Projeto Busca de Livros IBM</TextoHeader>
         </ContainerHeader>
     )
 }
