@@ -1,19 +1,5 @@
-import Axios, { AxiosInstance } from 'axios';
+import Axios from 'axios';
 
-export class baseApi {
+const baseApi = Axios.create({ baseURL: 'https://www.googleapis.com/books/v1/volumes?q=' });
 
-    private readonly BASE_URL = 'https://www.googleapis.com/books/v1/volumes?q=search+terms';
-    protected api: AxiosInstance;
-
-
-    constructor(){
-        this.api = Axios.create({
-            baseURL: this.BASE_URL,
-            headers: {
-                Accept: 'application/json',
-                Content: 'application/json',
-            }
-        })
-    }
-}
-
+export default baseApi;
