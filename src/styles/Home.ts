@@ -55,6 +55,10 @@ export const ContainterTituloTextInfo = styled.div`
     flex-direction: row;
 `;
 
+export const ImageBooks = styled.div`
+    backgroundImage:url(item.volumeInfo.imageLinks.smallThumbnail);
+`;
+
 export const Carregando = styled.div`
     display: flex;
     justify-content: center;
