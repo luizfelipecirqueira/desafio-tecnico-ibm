@@ -30,14 +30,29 @@ export const TextInfo = styled.div`
     font-size: 16px;
     font-weight: 500;
     font-style: normal;
-    line-height: 18px;
+    line-height: 25px;
     color: #A90139;
     margin: 10px;
+`;
+
+export const TituloInfo = styled.div`
+font-family: "Work Sans", Sans-serif;
+font-size: 18px;
+font-weight: bold;
+font-style: normal;
+line-height: 25px;
+color: #A90139;
+margin: 10px;
 `;
 
 export const ContainerTextInfo = styled.div`
     display: flex;
     flex-direction: column;
+`;
+
+export const ContainterTituloTextInfo = styled.div`
+    display: flex;
+    flex-direction: row;
 `;
 
 export const Carregando = styled.div`

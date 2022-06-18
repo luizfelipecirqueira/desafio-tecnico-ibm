@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { TextField, Button } from '@mui/material';
 import { useFormik } from 'formik';
-import { Carregando, Container, ContainerFormulario, ContainerBotao, ContainerInfo, TextInfo, ContainerTextInfo } from "../../styles/Home";
+import { Carregando, Container, ContainerFormulario, ContainerBotao, ContainerInfo, TituloInfo, TextInfo, ContainerTextInfo, ContainterTituloTextInfo } from "../../styles/Home";
 import { useAxios } from "../../hooks/UseFetch";
 import { Livro } from "../../types/Livro";
 import { useDescriptionContext } from "../../context/contextDescription";
@@ -76,9 +76,15 @@ export const Home = () => {
                     <div key={index} onClick={() => { handleSelectedBook(item); navigate("/description") }}>
                         <ContainerInfo>
                             <ContainerTextInfo>
-                                <TextInfo>Título: {item.volumeInfo.title}</TextInfo>
-                                <TextInfo>Editora: {item.volumeInfo.publisher}</TextInfo>
-                                <TextInfo>Data da Publicação: {item.volumeInfo.publishedDate}</TextInfo>
+                                <ContainterTituloTextInfo>
+                                    <TituloInfo>Título: </TituloInfo><TextInfo>{item.volumeInfo.title}</TextInfo>
+                                </ContainterTituloTextInfo>
+                                <ContainterTituloTextInfo>
+                                    <TituloInfo>Editora: </TituloInfo><TextInfo>{item.volumeInfo.publisher}</TextInfo>
+                                </ContainterTituloTextInfo>
+                                <ContainterTituloTextInfo>
+                                    <TituloInfo>Data da Publicação: </TituloInfo><TextInfo>{item.volumeInfo.publishedDate}</TextInfo>
+                                </ContainterTituloTextInfo>
                             </ContainerTextInfo>
                         </ContainerInfo>
                     </div>

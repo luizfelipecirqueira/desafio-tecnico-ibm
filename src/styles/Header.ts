@@ -11,5 +11,5 @@ export const TextoHeader = styled.div`
     font-size: 35px;
     font-weight: 500;
     font-style: normal;
-    line-height: 18px;
+    line-height: 50px;
 `;
