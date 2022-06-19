@@ -32,6 +32,7 @@ export const ContainerBotaoPage = styled.div`
 export const ContainerInfo = styled.div`
     display: flex;
     margin: 20px;
+    border: 1px solid;
 `;
 
 export const TextInfo = styled.div`

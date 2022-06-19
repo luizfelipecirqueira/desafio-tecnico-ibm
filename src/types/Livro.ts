@@ -6,9 +6,5 @@ export type Livro = {
     publisher:string,
     publishedDate:string,
     description:string,
-    industryIdentifiers:{
-        type:string,
-        identifier:string
-    }
 }
 }

@@ -1,7 +1,8 @@
 import React, { ReactNode, useContext, useState } from 'react';
 import { Livro } from '../types/Livro';
 
-const ContextDescription = React.createContext<{ selectedBook?: Livro, handleSelectedBook?: React.Dispatch<React.SetStateAction<Livro>> | any }>({ selectedBook: { volumeInfo: { authors: [''], description: '', industryIdentifiers: { identifier: '', type: '' }, publishedDate: '', publisher: '', subtitle: '', title: '' }, }});
+const inicialBook = { volumeInfo: { authors: [''], description: '', publishedDate: '', publisher: '', subtitle: '', title: '' }}
+const ContextDescription = React.createContext<{ selectedBook: Livro, handleSelectedBook?: React.Dispatch<React.SetStateAction<Livro>> | any }>({selectedBook: inicialBook});
 
 interface ChildrenProps {
     children: ReactNode
@@ -9,7 +10,7 @@ interface ChildrenProps {
 
 export const ContextDescriptionProvider = ({ children }: ChildrenProps) => {
 
-    const [selectedBook, setSelectedBook] = useState<Livro>();
+    const [selectedBook, setSelectedBook] = useState<Livro>(inicialBook);
 
     const handleSelectedBook = (book: Livro) => {
         setSelectedBook(book);
