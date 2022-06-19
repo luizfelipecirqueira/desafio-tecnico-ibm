@@ -69,7 +69,7 @@ export const ContainterTituloTextInfo = styled.div`
 `;
 
 export const ImageBooks = styled.div`
-    backgroundImage:url(item.volumeInfo.imageLinks.smallThumbnail);
+    margin: 20px;
 `;
 
 export const Carregando = styled.div`

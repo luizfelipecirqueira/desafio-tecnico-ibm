@@ -4,7 +4,7 @@ import { AiFillHeart, AiOutlineHeart } from "react-icons/ai";
 import { useNavigate } from 'react-router-dom';
 import { useDescriptionContext } from "../../context/contextDescription";
 import { ContainerIcon, TextInfoDescription, TitleFavorite, TituloInfoDescription } from '../../styles/Description';
-import { ContainerBotao, ContainterTituloTextInfo } from '../../styles/Home';
+import { ContainerBotao, ContainterTituloTextInfo, ImageBooks } from '../../styles/Home';
 import { Livro } from '../../types/Livro';
 
 export const Description = () => {
@@ -58,9 +58,9 @@ export const Description = () => {
                     {favorite === false ? (<AiOutlineHeart size={35} />) : (<AiFillHeart size={35} />)}
                 </ContainerIcon>
             </div>
-
-            <img src={selectedBook && selectedBook.volumeInfo.imageLinks.thumbnail} />
-
+            <ImageBooks>
+                <img src={selectedBook && selectedBook.volumeInfo.imageLinks.thumbnail} />
+            </ImageBooks>
             <ContainterTituloTextInfo>
                 <TituloInfoDescription>Título: </TituloInfoDescription><TextInfoDescription>{selectedBook && selectedBook.volumeInfo.title}</TextInfoDescription>
             </ContainterTituloTextInfo>

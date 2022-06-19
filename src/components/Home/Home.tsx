@@ -1,4 +1,4 @@
-// @ts-nocheck
+//@ts-nocheck
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { TextField, Button } from '@mui/material';
@@ -10,7 +10,7 @@ import { useDescriptionContext } from "../../context/contextDescription";
 
 
 export const Home = () => {
-    const { handleSelectedBook } = useDescriptionContext();
+    const { handleSelectedBook, setSearchString, searchString } = useDescriptionContext();
     const { fetchData, loading, response } = useAxios();
     const [page, setPage] = useState(0);
     const [submited, setSubmited] = useState('');
@@ -29,10 +29,9 @@ export const Home = () => {
     const nextPage = () => setPage(
         state => state + 1
     )
-
     useEffect(() => {
-        submited && fetchData({
-            method: "get", url: submited + `?p=${page}`
+        (submited||searchString) && fetchData({
+            method: "get", url: submited || searchString + `?p=${page}`
         });
     }, [page, submited])
 
@@ -44,12 +43,11 @@ export const Home = () => {
             }
             return errors;
         },
-        initialValues: {
-            search: '',
-        },
+        initialValues: searchString?{search:searchString}:{ search: '' },
         onSubmit: values => {
             setSubmited(values.search);
             setPage(0);
+            setSearchString(values.search);
         }
     });
 
@@ -62,7 +60,11 @@ export const Home = () => {
             <div>
                 <form onSubmit={formik.handleSubmit}>
                     <ContainerFormulario>
-                        <TextField variant="outlined" label="Digite o termo de Pesquisa" id="search" name="search" onChange={formik.handleChange} />
+                        <TextField variant="outlined" 
+                        value={formik.values.search}
+                        label="Digite o termo de Pesquisa"
+                         id="search" name="search" 
+                        onChange={formik.handleChange} />
                         <TextInfo>{formik.errors.search ? <div>{formik.errors.search}</div> : null}</TextInfo>
                         <ContainerBotao>
                             <Button variant="contained" type="submit">
@@ -71,7 +73,7 @@ export const Home = () => {
                         </ContainerBotao>
                     </ContainerFormulario>
                 </form>
-                {response && response.items.map((item: Livro, index) => (
+                {response && response.items.map((item: Livro, index:number) => (
 
                     <div key={index} onClick={() => { handleSelectedBook(item); navigate("/description") }}>
                         <ContainerInfo>
