@@ -1,6 +1,7 @@
 import { Button } from '@mui/material';
 import React, { useEffect, useState } from 'react';
 import { AiFillHeart, AiOutlineHeart } from "react-icons/ai";
+import { useNavigate } from 'react-router-dom';
 import { useDescriptionContext } from "../../context/contextDescription";
 import { ContainerIcon, TextInfoDescription, TitleFavorite, TituloInfoDescription } from '../../styles/Description';
 import { ContainerBotao, ContainterTituloTextInfo } from '../../styles/Home';
@@ -10,35 +11,56 @@ export const Description = () => {
 
     const { selectedBook } = useDescriptionContext();
     const [favorite, setFavorite] = useState(false);
+    const navigate = useNavigate();
 
 
-    var storedArray:Livro = JSON.parse(localStorage.getItem("books") || "");
-    
-    console.log(storedArray);
+    const storedArray: Livro[] = localStorage.getItem("books") ? JSON.parse(localStorage.getItem("books") || "") : [];
 
-    useEffect(()=>{
-        if(storedArray){
-            if(selectedBook.volumeInfo.title === storedArray.volumeInfo.title){
-                setFavorite(true);
-                console.log(storedArray.volumeInfo.title);
-            }
+    useEffect(() => {
+        if (!!storedArray.length) {
+            storedArray.map(
+                (book: Livro) => {
+                    if (book.volumeInfo.title === selectedBook.volumeInfo.title) {
+                        setFavorite(true);
+                    }
+                }
+            )
         }
-    },[])
+
+    }, [])
 
     const verifyArrayBooks = () => {
-        return null;
+        const array = []
+        array.push(selectedBook);
+        if (!storedArray.length) {
+            setFavorite(!favorite), localStorage.setItem("books", JSON.stringify(array))
+        }
+        else {
+            storedArray.map(item => {
+                if (item.volumeInfo.title === selectedBook.volumeInfo.title) {
+                    setFavorite(!favorite);
+                    storedArray.splice(storedArray.indexOf(item), 1);
+                    localStorage.setItem("books", JSON.stringify([...storedArray]))
+                }
+                else {
+                    setFavorite(!favorite), localStorage.setItem("books", JSON.stringify([...storedArray, selectedBook]))
+                }
+            })
+        }
     }
 
-    if (selectedBook) { console.log(selectedBook); }
 
     return (
         <div>
             <TitleFavorite>Clique no botão para favoritar</TitleFavorite>
-            <div onClick={() => {setFavorite(!favorite), localStorage.setItem("books",JSON.stringify(selectedBook))}}>
+            <div onClick={verifyArrayBooks}>
                 <ContainerIcon>
                     {favorite === false ? (<AiOutlineHeart size={35} />) : (<AiFillHeart size={35} />)}
                 </ContainerIcon>
             </div>
+
+            <img src={selectedBook && selectedBook.volumeInfo.imageLinks.thumbnail} />
+
             <ContainterTituloTextInfo>
                 <TituloInfoDescription>Título: </TituloInfoDescription><TextInfoDescription>{selectedBook && selectedBook.volumeInfo.title}</TextInfoDescription>
             </ContainterTituloTextInfo>
@@ -58,7 +80,7 @@ export const Description = () => {
                 <TituloInfoDescription>Descrição: </TituloInfoDescription><TextInfoDescription>{selectedBook && selectedBook.volumeInfo.description}</TextInfoDescription>
             </ContainterTituloTextInfo>
             <ContainerBotao>
-                <Button variant="contained" href="/">Voltar</Button>
+                <Button variant="contained" onClick={() => navigate("/")}>Voltar</Button>
             </ContainerBotao>
         </div>
     )
