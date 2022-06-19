@@ -10,19 +10,12 @@ export const Description = () => {
     const { selectedBook } = useDescriptionContext();
     const [favorite, setFavorite] = useState(false);
 
-    const selectedFavorite = () => {
-        let localFavorite = favorite;
-        localFavorite = !localFavorite;
-        setFavorite(favorite);
-    }
-
-
     if (selectedBook) { console.log(selectedBook); }
 
     return (
         <div>
             <TitleFavorite>Clique no botão para favoritar</TitleFavorite>
-            <div>
+            <div onClick={() => setFavorite(!favorite)}>
                 <ContainerIcon>
                     {favorite === false ? (<AiOutlineHeart size={35} />) : (<AiFillHeart size={35} />)}
                 </ContainerIcon>
