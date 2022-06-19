@@ -78,7 +78,7 @@ export const Home = () => {
                     <div key={index} onClick={() => { handleSelectedBook(item); navigate("/description") }}>
                         <ContainerInfo>
                             <ImageBooks>
-                                <img src={item.volumeInfo.imageLinks.thumbnail} alt="" />
+                                <img src={volumeInfo.imageLinks.thumbnail} alt="" />
                             </ImageBooks>
                             <ContainerTextInfo>
                                 <ContainterTituloTextInfo>
