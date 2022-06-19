@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { TextField, Button } from '@mui/material';
 import { useFormik } from 'formik';
-import { Carregando, Container, ContainerFormulario, ContainerBotao, ContainerBotaoPage, ContainerInfo, TituloInfo, TextInfo, ContainerTextInfo, ContainterTituloTextInfo } from "../../styles/Home";
+import { Carregando, ImageBooks, Container, ContainerFormulario, ContainerBotao, ContainerBotaoPage, ContainerInfo, TituloInfo, TextInfo, ContainerTextInfo, ContainterTituloTextInfo } from "../../styles/Home";
 import { useAxios } from "../../hooks/UseFetch";
 import { Livro } from "../../types/Livro";
 import { useDescriptionContext } from "../../context/contextDescription";
@@ -30,7 +30,7 @@ export const Home = () => {
         state => state + 1
     )
     useEffect(() => {
-        (submited||searchString) && fetchData({
+        (submited || searchString) && fetchData({
             method: "get", url: submited || searchString + `?p=${page}`
         });
     }, [page, submited])
@@ -43,7 +43,7 @@ export const Home = () => {
             }
             return errors;
         },
-        initialValues: searchString?{search:searchString}:{ search: '' },
+        initialValues: searchString ? { search: searchString } : { search: '' },
         onSubmit: values => {
             setSubmited(values.search);
             setPage(0);
@@ -60,11 +60,11 @@ export const Home = () => {
             <div>
                 <form onSubmit={formik.handleSubmit}>
                     <ContainerFormulario>
-                        <TextField variant="outlined" 
-                        value={formik.values.search}
-                        label="Digite o termo de Pesquisa"
-                         id="search" name="search" 
-                        onChange={formik.handleChange} />
+                        <TextField variant="outlined"
+                            value={formik.values.search}
+                            label="Digite o termo de Pesquisa"
+                            id="search" name="search"
+                            onChange={formik.handleChange} />
                         <TextInfo>{formik.errors.search ? <div>{formik.errors.search}</div> : null}</TextInfo>
                         <ContainerBotao>
                             <Button variant="contained" type="submit">
@@ -73,10 +73,13 @@ export const Home = () => {
                         </ContainerBotao>
                     </ContainerFormulario>
                 </form>
-                {response && response.items.map((item: Livro, index:number) => (
+                {response && response.items.map((item: Livro, index: number) => (
 
                     <div key={index} onClick={() => { handleSelectedBook(item); navigate("/description") }}>
                         <ContainerInfo>
+                            <ImageBooks>
+                                <img src={item.volumeInfo.imageLinks.thumbnail} alt="" />
+                            </ImageBooks>
                             <ContainerTextInfo>
                                 <ContainterTituloTextInfo>
                                     <TituloInfo>Título: </TituloInfo><TextInfo>{item.volumeInfo.title}</TextInfo>
@@ -93,13 +96,13 @@ export const Home = () => {
                             </ContainerTextInfo>
                         </ContainerInfo>
                     </div>
-                ))   
+                ))
                 }
-            <ContainerBotaoPage>
-                <Button variant="contained" onClick={prevPage}>Prev</Button>
-                <Button variant="contained" onClick={nextPage}>Next</Button>
-            </ContainerBotaoPage>
-        </div>
+                <ContainerBotaoPage>
+                    <Button variant="contained" onClick={prevPage}>Prev</Button>
+                    <Button variant="contained" onClick={nextPage}>Next</Button>
+                </ContainerBotaoPage>
+            </div>
         </Container >
     )
 }
