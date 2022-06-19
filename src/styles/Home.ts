@@ -42,6 +42,7 @@ export const TextInfo = styled.div`
     line-height: 25px;
     color: #A90139;
     margin: 10px;
+    cursor:pointer;
 `;
 
 export const TituloInfo = styled.div`
@@ -52,6 +53,7 @@ font-style: normal;
 line-height: 25px;
 color: #A90139;
 margin: 10px;
+cursor:pointer;
 `;
 
 export const ContainerTextInfo = styled.div`

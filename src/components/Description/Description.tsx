@@ -1,22 +1,32 @@
 import { Button } from '@mui/material';
 import React, { useState } from 'react';
-import { AiOutlineHeart } from "react-icons/ai";
+import { AiFillHeart, AiOutlineHeart } from "react-icons/ai";
 import { useDescriptionContext } from "../../context/contextDescription";
-import { ContainerIcon } from '../../styles/Description';
+import { ContainerIcon, TitleFavorite } from '../../styles/Description';
 import { ContainerBotao, ContainterTituloTextInfo, TextInfo, TituloInfo } from '../../styles/Home';
 
 export const Description = () => {
 
     const { selectedBook } = useDescriptionContext();
-    
+    const [favorite, setFavorite] = useState(false);
+
+    const selectedFavorite = () => {
+        let localFavorite = favorite;
+        localFavorite = !localFavorite;
+        setFavorite(favorite);
+    }
+
 
     if (selectedBook) { console.log(selectedBook); }
 
     return (
         <div>
-            <ContainerIcon>
-                <AiOutlineHeart size={35} />
-            </ContainerIcon>
+            <TitleFavorite>Clique no botão para favoritar</TitleFavorite>
+            <div>
+                <ContainerIcon>
+                    {favorite === false ? (<AiOutlineHeart size={35} />) : (<AiFillHeart size={35} />)}
+                </ContainerIcon>
+            </div>
             <ContainterTituloTextInfo>
                 <TituloInfo>Título: </TituloInfo><TextInfo>{selectedBook && selectedBook.volumeInfo.title}</TextInfo>
             </ContainterTituloTextInfo>

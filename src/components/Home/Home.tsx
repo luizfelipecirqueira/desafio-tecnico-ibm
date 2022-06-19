@@ -62,12 +62,8 @@ export const Home = () => {
             <div>
                 <form onSubmit={formik.handleSubmit}>
                     <ContainerFormulario>
-<<<<<<< HEAD
-                        <TextField variant="outlined" label="Digite o termo de Pesquisa" onChange={formik.handleChange} required />
-=======
                         <TextField variant="outlined" label="Digite o termo de Pesquisa" id="search" name="search" onChange={formik.handleChange} />
                         <TextInfo>{formik.errors.search ? <div>{formik.errors.search}</div> : null}</TextInfo>
->>>>>>> b2fc6c4f05de47acb9c3600b8f5698aff7c29555
                         <ContainerBotao>
                             <Button variant="contained" type="submit">
                                 Carregar
