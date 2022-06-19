@@ -2,8 +2,8 @@ import { Button } from '@mui/material';
 import React, { useState } from 'react';
 import { AiFillHeart, AiOutlineHeart } from "react-icons/ai";
 import { useDescriptionContext } from "../../context/contextDescription";
-import { ContainerIcon, TitleFavorite } from '../../styles/Description';
-import { ContainerBotao, ContainterTituloTextInfo, TextInfo, TituloInfo } from '../../styles/Home';
+import { ContainerIcon, TextInfoDescription, TitleFavorite, TituloInfoDescription } from '../../styles/Description';
+import { ContainerBotao, ContainterTituloTextInfo } from '../../styles/Home';
 
 export const Description = () => {
 
@@ -28,28 +28,28 @@ export const Description = () => {
                 </ContainerIcon>
             </div>
             <ContainterTituloTextInfo>
-                <TituloInfo>Título: </TituloInfo><TextInfo>{selectedBook && selectedBook.volumeInfo.title}</TextInfo>
+                <TituloInfoDescription>Título: </TituloInfoDescription><TextInfoDescription>{selectedBook && selectedBook.volumeInfo.title}</TextInfoDescription>
             </ContainterTituloTextInfo>
             <ContainterTituloTextInfo>
-                <TituloInfo>Subtitulo: </TituloInfo> <TextInfo>{selectedBook && selectedBook.volumeInfo.subtitle}</TextInfo>
+                <TituloInfoDescription>Subtitulo: </TituloInfoDescription> <TextInfoDescription>{selectedBook && selectedBook.volumeInfo.subtitle}</TextInfoDescription>
             </ContainterTituloTextInfo>
             <ContainterTituloTextInfo>
-                <TituloInfo>Autores: </TituloInfo><TextInfo>{selectedBook && selectedBook.volumeInfo.authors}</TextInfo>
+                <TituloInfoDescription>Autores: </TituloInfoDescription><TextInfoDescription>{selectedBook && selectedBook.volumeInfo.authors}</TextInfoDescription>
             </ContainterTituloTextInfo>
             <ContainterTituloTextInfo>
-                <TituloInfo>Editora: </TituloInfo><TextInfo>{selectedBook && selectedBook.volumeInfo.publisher}</TextInfo>
+                <TituloInfoDescription>Editora: </TituloInfoDescription><TextInfoDescription>{selectedBook && selectedBook.volumeInfo.publisher}</TextInfoDescription>
             </ContainterTituloTextInfo>
             <ContainterTituloTextInfo>
-                <TituloInfo>Data da publicação: </TituloInfo><TextInfo>{selectedBook && selectedBook.volumeInfo.publishedDate}</TextInfo>
+                <TituloInfoDescription>Data da publicação: </TituloInfoDescription><TextInfoDescription>{selectedBook && selectedBook.volumeInfo.publishedDate}</TextInfoDescription>
             </ContainterTituloTextInfo>
             <ContainterTituloTextInfo>
-                <TituloInfo>Descrição: </TituloInfo><TextInfo>{selectedBook && selectedBook.volumeInfo.description}</TextInfo>
+                <TituloInfoDescription>Descrição: </TituloInfoDescription><TextInfoDescription>{selectedBook && selectedBook.volumeInfo.description}</TextInfoDescription>
             </ContainterTituloTextInfo>
             <ContainterTituloTextInfo>
-                <TituloInfo>Identificador: </TituloInfo><TextInfo>{selectedBook && selectedBook.volumeInfo.industryIdentifiers.identifier}</TextInfo>
+                <TituloInfoDescription>Identificador: </TituloInfoDescription><TextInfoDescription>{selectedBook && selectedBook.volumeInfo.industryIdentifiers.identifier}</TextInfoDescription>
             </ContainterTituloTextInfo>
             <ContainterTituloTextInfo>
-                <TituloInfo>Tipo: </TituloInfo><TextInfo>{selectedBook && selectedBook.volumeInfo.industryIdentifiers.type}</TextInfo>
+                <TituloInfoDescription>Tipo: </TituloInfoDescription><TextInfoDescription>{selectedBook && selectedBook.volumeInfo.industryIdentifiers.type}</TextInfoDescription>
             </ContainterTituloTextInfo>
             <ContainerBotao>
                 <Button variant="contained" href="/">Voltar</Button>

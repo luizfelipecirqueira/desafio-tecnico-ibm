@@ -91,14 +91,13 @@ export const Home = () => {
                             </ContainerTextInfo>
                         </ContainerInfo>
                     </div>
-
-                ))
+                ))   
                 }
-                <ContainerBotaoPage>
-                    <Button variant="contained" onClick={prevPage}>Prev</Button>
-                    <Button variant="contained" onClick={nextPage}>Next</Button>
-                </ContainerBotaoPage>
-            </div>
-        </Container>
+            <ContainerBotaoPage>
+                <Button variant="contained" onClick={prevPage}>Prev</Button>
+                <Button variant="contained" onClick={nextPage}>Next</Button>
+            </ContainerBotaoPage>
+        </div>
+        </Container >
     )
 }
