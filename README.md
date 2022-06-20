@@ -1,12 +1,16 @@
 # Projeto criado para realização do desafio técnico para a IBM
 
-Tecnologias utilizadas no desenvolvimento do Projeto:
+Projeto feito com:
 
 REACTJS
 TYPESCRIPT
 MATERIAL-UI (MUI)
 JEST
-
+HOOKS CUSTOMIZADOS
+CONTEXT
+STYLED-COMPONENTS
+AXIOS
+API GOOGLE BOOKS
 
 # Getting Started with Create React App
 

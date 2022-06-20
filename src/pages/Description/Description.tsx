@@ -58,27 +58,29 @@ export const Description = () => {
                     {favorite === false ? (<AiOutlineHeart size={35} />) : (<AiFillHeart size={35} />)}
                 </ContainerIcon>
             </div>
-            <ImageBooks>
-                <img src={selectedBook && selectedBook.volumeInfo.imageLinks.thumbnail} />
-            </ImageBooks>
-            <ContainterTituloTextInfo>
-                <TituloInfoDescription>Título: </TituloInfoDescription><TextInfoDescription>{selectedBook && selectedBook.volumeInfo.title}</TextInfoDescription>
-            </ContainterTituloTextInfo>
-            <ContainterTituloTextInfo>
-                <TituloInfoDescription>Subtitulo: </TituloInfoDescription> <TextInfoDescription>{selectedBook && selectedBook.volumeInfo.subtitle}</TextInfoDescription>
-            </ContainterTituloTextInfo>
-            <ContainterTituloTextInfo>
-                <TituloInfoDescription>Autores: </TituloInfoDescription><TextInfoDescription>{selectedBook && selectedBook.volumeInfo.authors}</TextInfoDescription>
-            </ContainterTituloTextInfo>
-            <ContainterTituloTextInfo>
-                <TituloInfoDescription>Editora: </TituloInfoDescription><TextInfoDescription>{selectedBook && selectedBook.volumeInfo.publisher}</TextInfoDescription>
-            </ContainterTituloTextInfo>
-            <ContainterTituloTextInfo>
-                <TituloInfoDescription>Data da publicação: </TituloInfoDescription><TextInfoDescription>{selectedBook && selectedBook.volumeInfo.publishedDate}</TextInfoDescription>
-            </ContainterTituloTextInfo>
-            <ContainterTituloTextInfo>
-                <TituloInfoDescription>Descrição: </TituloInfoDescription><TextInfoDescription>{selectedBook && selectedBook.volumeInfo.description}</TextInfoDescription>
-            </ContainterTituloTextInfo>
+            <div>
+                <ImageBooks>
+                    <img src={selectedBook && selectedBook.volumeInfo.imageLinks.thumbnail} />
+                </ImageBooks>
+                <ContainterTituloTextInfo>
+                    <TituloInfoDescription>Título: </TituloInfoDescription><TextInfoDescription>{selectedBook && selectedBook.volumeInfo.title}</TextInfoDescription>
+                </ContainterTituloTextInfo>
+                <ContainterTituloTextInfo>
+                    <TituloInfoDescription>Subtitulo: </TituloInfoDescription> <TextInfoDescription>{selectedBook && selectedBook.volumeInfo.subtitle}</TextInfoDescription>
+                </ContainterTituloTextInfo>
+                <ContainterTituloTextInfo>
+                    <TituloInfoDescription>Autores: </TituloInfoDescription><TextInfoDescription>{selectedBook && selectedBook.volumeInfo.authors}</TextInfoDescription>
+                </ContainterTituloTextInfo>
+                <ContainterTituloTextInfo>
+                    <TituloInfoDescription>Editora: </TituloInfoDescription><TextInfoDescription>{selectedBook && selectedBook.volumeInfo.publisher}</TextInfoDescription>
+                </ContainterTituloTextInfo>
+                <ContainterTituloTextInfo>
+                    <TituloInfoDescription>Data da publicação: </TituloInfoDescription><TextInfoDescription>{selectedBook && selectedBook.volumeInfo.publishedDate}</TextInfoDescription>
+                </ContainterTituloTextInfo>
+                <ContainterTituloTextInfo>
+                    <TituloInfoDescription>Descrição: </TituloInfoDescription><TextInfoDescription>{selectedBook && selectedBook.volumeInfo.description}</TextInfoDescription>
+                </ContainterTituloTextInfo>
+            </div>
             <ContainerBotao>
                 <Button variant="contained" onClick={() => navigate("/")}>Voltar</Button>
             </ContainerBotao>
