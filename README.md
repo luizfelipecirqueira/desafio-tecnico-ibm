@@ -1,5 +1,12 @@
 # Projeto criado para realização do desafio técnico para a IBM
 
+Tecnologias utilizadas no desenvolvimento do Projeto:
+
+REACTJS
+TYPESCRIPT
+MATERIAL-UI (MUI)
+JEST
+
 
 # Getting Started with Create React App
 
