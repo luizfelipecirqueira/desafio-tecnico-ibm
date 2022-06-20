@@ -73,30 +73,58 @@ export const Home = () => {
                         </ContainerBotao>
                     </ContainerFormulario>
                 </form>
-                {response && response.items.map((item: Livro, index: number) => (
-
-                    <div key={index} onClick={() => { handleSelectedBook(item); navigate("/description") }}>
-                        <ContainerInfo>
-                            <ImageBooks>
-                                <img src={item.volumeInfo.imageLinks.thumbnail} alt="" />
-                            </ImageBooks>
-                            <ContainerTextInfo>
-                                <ContainterTituloTextInfo>
-                                    <TituloInfo>Título: </TituloInfo><TextInfo>{item.volumeInfo.title}</TextInfo>
-                                </ContainterTituloTextInfo>
-                                <ContainterTituloTextInfo>
-                                    <TituloInfo>Autor(es): </TituloInfo><TextInfo>{item.volumeInfo.authors}</TextInfo>
-                                </ContainterTituloTextInfo>
-                                <ContainterTituloTextInfo>
-                                    <TituloInfo>Editora: </TituloInfo><TextInfo>{item.volumeInfo.publisher}</TextInfo>
-                                </ContainterTituloTextInfo>
-                                <ContainterTituloTextInfo>
-                                    <TituloInfo>Data da Publicação: </TituloInfo><TextInfo>{item.volumeInfo.publishedDate}</TextInfo>
-                                </ContainterTituloTextInfo>
-                            </ContainerTextInfo>
-                        </ContainerInfo>
-                    </div>
-                ))
+                {response && response.items.map((item: Livro, index: number) => {
+                    try {
+                        return (
+                            <div key={index} onClick={() => { handleSelectedBook(item); navigate("/description") }}>
+                                <ContainerInfo>
+                                    <ImageBooks>
+                                        <img src={item.volumeInfo.imageLinks.thumbnail} alt="" />
+                                    </ImageBooks>
+                                    <ContainerTextInfo>
+                                        <ContainterTituloTextInfo>
+                                            <TituloInfo>Título: </TituloInfo><TextInfo>{item.volumeInfo.title}</TextInfo>
+                                        </ContainterTituloTextInfo>
+                                        <ContainterTituloTextInfo>
+                                            <TituloInfo>Autor(es): </TituloInfo><TextInfo>{item.volumeInfo.authors}</TextInfo>
+                                        </ContainterTituloTextInfo>
+                                        <ContainterTituloTextInfo>
+                                            <TituloInfo>Editora: </TituloInfo><TextInfo>{item.volumeInfo.publisher}</TextInfo>
+                                        </ContainterTituloTextInfo>
+                                        <ContainterTituloTextInfo>
+                                            <TituloInfo>Data da Publicação: </TituloInfo><TextInfo>{item.volumeInfo.publishedDate}</TextInfo>
+                                        </ContainterTituloTextInfo>
+                                    </ContainerTextInfo>
+                                </ContainerInfo>
+                            </div>
+                        )
+                    }
+                    catch(err){
+                        return (
+                            <div key={index} onClick={() => { handleSelectedBook(item); navigate("/description") }}>
+                            <ContainerInfo>
+                                <ImageBooks>
+                                    <img src="" alt="" />
+                                </ImageBooks>
+                                <ContainerTextInfo>
+                                    <ContainterTituloTextInfo>
+                                        <TituloInfo>Título: </TituloInfo><TextInfo>{item.volumeInfo.title}</TextInfo>
+                                    </ContainterTituloTextInfo>
+                                    <ContainterTituloTextInfo>
+                                        <TituloInfo>Autor(es): </TituloInfo><TextInfo>{item.volumeInfo.authors}</TextInfo>
+                                    </ContainterTituloTextInfo>
+                                    <ContainterTituloTextInfo>
+                                        <TituloInfo>Editora: </TituloInfo><TextInfo>{item.volumeInfo.publisher}</TextInfo>
+                                    </ContainterTituloTextInfo>
+                                    <ContainterTituloTextInfo>
+                                        <TituloInfo>Data da Publicação: </TituloInfo><TextInfo>{item.volumeInfo.publishedDate}</TextInfo>
+                                    </ContainterTituloTextInfo>
+                                </ContainerTextInfo>
+                            </ContainerInfo>
+                        </div>
+                        )
+                    }
+                })
                 }
                 <ContainerBotaoPage>
                     <Button variant="contained" onClick={prevPage}>Prev</Button>
